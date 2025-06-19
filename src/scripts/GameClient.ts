@@ -42,13 +42,7 @@ export default class GameClient {
           document.documentElement.clientWidth,
           document.documentElement.clientHeight / HEIGHT_RATIO
         )
-        return [
-          CANVAS_WIDTH,
-          Math.max(
-            CANVAS_WIDTH * HEIGHT_RATIO,
-            document.documentElement.clientHeight
-          ),
-        ]
+        return [CANVAS_WIDTH, CANVAS_WIDTH * HEIGHT_RATIO]
       }
 
       p5.windowResized = () => {
