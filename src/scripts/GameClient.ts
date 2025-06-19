@@ -39,8 +39,8 @@ export default class GameClient {
       const getCanvasSize = () => {
         const HEIGHT_RATIO = 1.7
         const CANVAS_WIDTH = Math.min(
-          document.documentElement.clientWidth,
-          document.documentElement.clientHeight / HEIGHT_RATIO
+          window.innerWidth,
+          window.innerHeight / HEIGHT_RATIO
         )
         return [CANVAS_WIDTH, CANVAS_WIDTH * HEIGHT_RATIO]
       }
