@@ -144,6 +144,18 @@ export default class GameClient {
         else this.touchCountdown = 10
         render.click(p5)
       }
+
+      // p5.keyPressed = () => {
+      //   // start ending phase
+      //   gameplay.phase = "ENDING"
+      //   gameplay.endingControl.isOpened = true
+      //   gameplay.endingControl.yyAP = 0
+      //   gameplay.endingControl.increaseAP = 0
+      //   gameplay.render.buttons.closeShop.ap = 0
+      //   gameplay.render.endingRatingAPs = [0, 0, 0, 0]
+      //   gameplay.render.prevRatingLetters = ["F", "F", "F", "F"]
+      //   gameplay.render.buttons.shareImage.ap = 0
+      // }
     }
 
     new _p5_(sketch)

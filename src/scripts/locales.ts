@@ -21,7 +21,7 @@ export type Translation = {
     yin: string
     yang: string
     round: string
-    share: string
+    playagain: string
   }
   carddesc: string[]
 }
@@ -47,7 +47,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Yin",
       yang: "Yang",
       round: "Round",
-      share: "Share",
+      playagain: "Play again",
     },
     carddesc: [
       "points for each Yin animal in this row.",
@@ -124,7 +124,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Инь",
       yang: "Ян",
       round: "Круглый",
-      share: "Поделиться",
+      playagain: "Играть снова",
     },
     carddesc: [
       "очка за каждое животное Инь в этом ряду.",
@@ -201,7 +201,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Yin",
       yang: "Yang",
       round: "Ronda",
-      share: "Compartir",
+      playagain: "Jugar de nuevo",
     },
     carddesc: [
       "puntos por cada animal Yin en esta fila.",
@@ -278,7 +278,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Yin",
       yang: "Yang",
       round: "Rodada",
-      share: "Compartilhar",
+      playagain: "Jogar novamente",
     },
     carddesc: [
       "pontos para cada animal Yin nesta linha.",
@@ -355,7 +355,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Âm",
       yang: "Dương",
       round: "Vòng",
-      share: "Chia sẻ",
+      playagain: "Chơi lại",
     },
     carddesc: [
       "điểm cho mỗi con vật Âm trong hàng này.",
@@ -432,7 +432,7 @@ export const translations: Record<Language, Translation> = {
       yin: "Yin",
       yang: "Yang",
       round: "Rond",
-      share: "Partager",
+      playagain: "Jouer à nouveau",
     },
     carddesc: [
       "points pour chaque animal Yin de cette rangée.",

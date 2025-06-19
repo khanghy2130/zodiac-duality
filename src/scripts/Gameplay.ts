@@ -390,16 +390,38 @@ export default class Gameplay {
   }
 
   startGetPhase() {
-    if (this.gs && this.gs.round < 6) this.render.roundTextAP = 0 // trigger round text
+    if (this.gs!.round < 6) {
+      this.render.roundTextAP = 0 // trigger round text
+      this.phase = "GET"
 
-    // spectator skips this and PLAY phases
-    if (this.myPlayerId === undefined) {
-      this.phase = "READY"
-      return
+      this.updateYieldPreview()
+
+      this.localCards = null
+      const shop = this.shop
+
+      // get new cards
+      shop.availableCards = [
+        shop.yangPool[Math.floor(shop.yangPool.length * Math.random())],
+        shop.yinPool[Math.floor(shop.yinPool.length * Math.random())],
+      ]
+
+      shop.cardHolders = [
+        // first card has less flips
+        { flips: 6, ap: 1, card: shop.availableCards[0] },
+        { flips: 8, ap: 1, card: shop.availableCards[1] },
+      ]
+      shop.isOpened = false
+      shop.hasRerolled = false
+      shop.menuType = "DEFAULT"
+      shop.holdersY.start = -100
+      shop.holdersY.end = shop.holdersY.DEFAULT
+      shop.holdersY.ap = 0
+      shop.flipYinPool = shop.yinPool
+      shop.flipYangPool = shop.yangPool
+      shop.revealBounceAP = 1
     }
-
     // last round? show result popup
-    if (this.gs!.round > 5) {
+    else {
       this.phase = "READY"
       // start ending phase
       this.phase = "ENDING"
@@ -411,32 +433,6 @@ export default class Gameplay {
       this.render.prevRatingLetters = ["F", "F", "F", "F"]
       this.render.buttons.shareImage.ap = 0
       return
-    } else this.phase = "GET" // continue below
-
-    this.updateYieldPreview()
-
-    this.localCards = null
-    const shop = this.shop
-
-    // get new cards
-    shop.availableCards = [
-      shop.yangPool[Math.floor(shop.yangPool.length * Math.random())],
-      shop.yinPool[Math.floor(shop.yinPool.length * Math.random())],
-    ]
-
-    shop.cardHolders = [
-      // first card has less flips
-      { flips: 6, ap: 1, card: shop.availableCards[0] },
-      { flips: 8, ap: 1, card: shop.availableCards[1] },
-    ]
-    shop.isOpened = false
-    shop.hasRerolled = false
-    shop.menuType = "DEFAULT"
-    shop.holdersY.start = -100
-    shop.holdersY.end = shop.holdersY.DEFAULT
-    shop.holdersY.ap = 0
-    shop.flipYinPool = shop.yinPool
-    shop.flipYangPool = shop.yangPool
-    shop.revealBounceAP = 1
+    }
   }
 }

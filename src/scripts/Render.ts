@@ -170,9 +170,33 @@ export default class Render {
       // is at this player? show past + sc total
       return [p.prevYangPts + sc.yangSum, p.prevYinPts + sc.yinSum]
     })
-    p5.textSize(44)
 
     p5.noStroke()
+    p5.textSize(36)
+
+    // current scoring sums
+    if (isScoring && sc.playerIndex === 0) {
+      p5.fill(255)
+      p5.rect(200, 115, 160, 60, 0, 0, 0, 20)
+      p5.fill(30)
+      p5.rect(360, 115, 160, 60, 0, 0, 20, 0)
+      p5.text("+" + sc.yangSum, 200, 111)
+      p5.fill(255)
+      p5.text("+" + sc.yinSum, 360, 111)
+    }
+
+    // render preview sums
+    if (!isScoring && gp.yieldPreview.isShown) {
+      p5.fill(255)
+      p5.rect(200, 115, 160, 60, 0, 0, 0, 20)
+      p5.fill(30)
+      p5.rect(360, 115, 160, 60, 0, 0, 20, 0)
+      p5.text("+" + gp.yieldPreview.yangSum, 200, 111)
+      p5.fill(255)
+      p5.text("+" + gp.yieldPreview.yinSum, 360, 111)
+    }
+
+    p5.textSize(44)
     p5.fill(255)
     p5.rect(200, 60, 160, 60, 20, 0, 0, 0)
     p5.fill(30)
@@ -180,31 +204,7 @@ export default class Render {
     p5.text(displayPoints[0][0], 200, 55)
     p5.fill(255)
     p5.text(displayPoints[0][1], 360, 55)
-    p5.textSize(36)
 
-    // current scoring sums
-    if (isScoring && sc.playerIndex === 0) {
-      p5.fill(255)
-      p5.rect(200, 120, 160, 60, 0, 0, 0, 20)
-      p5.fill(30)
-      p5.rect(360, 120, 160, 60, 0, 0, 20, 0)
-      p5.text("+" + sc.yangSum, 200, 115)
-      p5.fill(255)
-      p5.text("+" + sc.yinSum, 360, 115)
-    }
-
-    // render preview sums
-    if (!isScoring && gp.yieldPreview.isShown) {
-      p5.fill(255)
-      p5.rect(200, 120, 160, 60, 0, 0, 0, 20)
-      p5.fill(30)
-      p5.rect(360, 120, 160, 60, 0, 0, 20, 0)
-      p5.text("+" + gp.yieldPreview.yangSum, 200, 115)
-      p5.fill(255)
-      p5.text("+" + gp.yieldPreview.yinSum, 360, 115)
-    }
-
-    p5.noStroke()
     this.renderYin(280, 60, 30)
     this.renderYang(280, 60, 30)
   }
@@ -531,39 +531,39 @@ export default class Render {
         const xChange = (1 - Math.pow(1 - ec.yyAP, 5)) * 100
         for (let i = 0; i < playersState.length; i++) {
           const p = playersState[i]
-          const y = 190 + i * 180
+          const y = 230
           p5.noStroke()
 
           // yy
-          const yangX = 170 + xChange
-          const yinX = 370 - xChange
-          this.renderYang(yangX, y, 40)
-          this.renderYin(yinX, y, 40)
+          const yangX = 150 + xChange
+          const yinX = 350 - xChange
+          this.renderYang(yangX, y, 80)
+          this.renderYin(yinX, y, 80)
 
           const actualPoints = Math.min(p.yangPts, p.yinPts) // points here
           const unflooredIF =
             Math.sqrt(1 - Math.pow(ec.increaseAP - 1, 2)) * actualPoints
           const increaseFactor = Math.floor(unflooredIF)
-          p5.textSize(26)
+          p5.textSize(36)
           p5.fill(255)
-          p5.rect(yangX - 30, y + 70, 60, 30)
+          p5.rect(yangX - 50, y + 120, 100, 50)
           p5.fill(30)
           // yang points
-          p5.text(p.yangPts - increaseFactor, yangX - 30, y + 67)
+          p5.text(p.yangPts - increaseFactor, yangX - 50, y + 115)
 
           p5.fill(30)
-          p5.rect(yinX + 30, y + 70, 60, 30)
+          p5.rect(yinX + 50, y + 120, 100, 50)
           p5.fill(255)
           // yin points
-          p5.text(p.yinPts - increaseFactor, yinX + 30, y + 67)
+          p5.text(p.yinPts - increaseFactor, yinX + 50, y + 115)
 
           if (increaseFactor > 0) {
             // actual points
-            p5.textSize(32)
+            p5.textSize(60)
             p5.stroke(0)
-            p5.strokeWeight(6)
+            p5.strokeWeight(10)
             p5.fill(65, 200, 60)
-            p5.text(increaseFactor, 270, y - 4)
+            p5.text(increaseFactor, 250, y - 8)
 
             // letter rating
             let letter = "F"
@@ -600,13 +600,13 @@ export default class Render {
               this.playSound(this.scoreSound)
             }
             this.endingRatingAPs[i] = Math.min(1, this.endingRatingAPs[i] + 0.1)
-            p5.textSize(80 - 30 * this.endingRatingAPs[i])
+            p5.textSize(120 - 50 * this.endingRatingAPs[i])
             p5.fill(0)
             p5.strokeWeight(15)
-            p5.text(letter, 420, y)
-            p5.strokeWeight(4)
+            p5.text(letter, 250, y + 300 - 10)
+            p5.strokeWeight(6)
             p5.noFill()
-            p5.arc(420, y + 6, 100, 100, 0, percentage * 360)
+            p5.arc(250, y + 300, 130, 130, 0, percentage * 360)
           }
         }
         // update ap

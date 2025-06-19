@@ -353,7 +353,7 @@ const createButtons = (
     ),
 
     shareImage: new Button(
-      [250, 800, 200, 70],
+      [250, 800, 400, 70],
       p5.color(65, 150, 60),
       p5,
       render,
@@ -362,7 +362,7 @@ const createButtons = (
         p5.stroke(0)
         p5.strokeWeight(8)
         p5.textSize(36)
-        p5.text(gc.translatedTexts.short.share, 0, -8)
+        p5.text(gc.translatedTexts.short.playagain, 0, -8)
       },
       function () {
         const game: GameState = {
