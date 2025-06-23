@@ -429,8 +429,8 @@ export default class Gameplay {
       this.endingControl.yyAP = 0
       this.endingControl.increaseAP = 0
       this.render.buttons.closeShop.ap = 0
-      this.render.endingRatingAPs = [0, 0, 0, 0]
-      this.render.prevRatingLetters = ["F", "F", "F", "F"]
+      this.render.endingRatingAP = 0
+      this.render.prevRatingLetter = "F"
       this.render.buttons.shareImage.ap = 0
       return
     }

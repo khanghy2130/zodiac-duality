@@ -27,6 +27,8 @@ interface Flasher {
   ap: 0
 }
 
+type Rating = "F" | "D" | "C" | "B" | "A" | "S"
+
 export default class Render {
   gc: GameClient
   sheet!: P5.Image
@@ -49,8 +51,8 @@ export default class Render {
   animalsOrder: Animal[]
   elesOrder: Ele[]
 
-  endingRatingAPs: number[]
-  prevRatingLetters: string[]
+  endingRatingAP: number
+  prevRatingLetter: Rating
 
   roundTextAP: number
 
@@ -63,8 +65,8 @@ export default class Render {
     this.flashers = []
     this.dragHoveredPos = null
     this.roundTextAP = 0
-    this.endingRatingAPs = [0, 0, 0, 0]
-    this.prevRatingLetters = ["F", "F", "F", "F"]
+    this.endingRatingAP = 0
+    this.prevRatingLetter = "F"
     this.animalsOrder = [
       "RAT",
       "OX",
@@ -525,90 +527,120 @@ export default class Render {
         p5.fill(0, 220)
         p5.rect(250, h / 2, 500, h)
 
-        if (ec.increaseAP === 1) this.buttons.closeShop.render(p5)
-
         // render players
         const xChange = (1 - Math.pow(1 - ec.yyAP, 5)) * 100
-        for (let i = 0; i < playersState.length; i++) {
-          const p = playersState[i]
-          const y = 230
+
+        const p = playersState[0]
+        const y = 200
+        p5.noStroke()
+
+        // yy
+        const yangX = 150 + xChange
+        const yinX = 350 - xChange
+        this.renderYang(yangX, y, 80)
+        this.renderYin(yinX, y, 80)
+
+        const actualPoints = Math.min(p.yangPts, p.yinPts) // points here
+        const unflooredIF =
+          Math.sqrt(1 - Math.pow(ec.increaseAP - 1, 2)) * actualPoints
+        const increaseFactor = Math.floor(unflooredIF)
+        p5.textSize(36)
+        p5.fill(255)
+        p5.rect(yangX - 50, y + 120, 100, 50)
+        p5.fill(30)
+        // yang points
+        p5.text(p.yangPts - increaseFactor, yangX - 50, y + 115)
+
+        p5.fill(30)
+        p5.rect(yinX + 50, y + 120, 100, 50)
+        p5.fill(255)
+        // yin points
+        p5.text(p.yinPts - increaseFactor, yinX + 50, y + 115)
+
+        if (increaseFactor > 0) {
+          // actual points
+          p5.textSize(60)
+          p5.stroke(0)
+          p5.strokeWeight(10)
+          p5.fill(65, 200, 60)
+          p5.text(increaseFactor, 250, y - 8)
+
+          // letter rating
+          let letter: Rating = "F"
+          let percentage = 0
+          if (unflooredIF < 70) {
+            percentage = unflooredIF / 70
+            letter = "F"
+            p5.stroke(150)
+          } else if (unflooredIF < 80) {
+            percentage = (unflooredIF - 70) / 10
+            letter = "D"
+            p5.stroke(65, 200, 60)
+          } else if (unflooredIF < 90) {
+            percentage = (unflooredIF - 80) / 10
+            letter = "C"
+            p5.stroke(23, 160, 227)
+          } else if (unflooredIF < 100) {
+            percentage = (unflooredIF - 90) / 10
+            letter = "B"
+            p5.stroke(237, 190, 17)
+          } else if (unflooredIF < 110) {
+            percentage = (unflooredIF - 100) / 10
+            letter = "A"
+            p5.stroke(240, 70, 60)
+          } else {
+            percentage = 1
+            letter = "S"
+            p5.stroke(255)
+          }
+          // trigger new letter effect
+          if (this.prevRatingLetter !== letter) {
+            this.prevRatingLetter = letter
+            this.endingRatingAP = 0
+            this.playSound(this.scoreSound)
+          }
+          this.endingRatingAP = Math.min(1, this.endingRatingAP + 0.1)
+          p5.textSize(120 - 50 * this.endingRatingAP)
+          p5.fill(0)
+          p5.strokeWeight(20)
+          p5.text(letter, 250, y + 280 - 10)
+          p5.strokeWeight(10)
+          p5.noFill()
+          p5.arc(250, y + 280, 140, 140, 0, percentage * 360)
+        }
+
+        if (ec.increaseAP === 1) {
+          this.buttons.closeShop.render(p5)
+
+          // charts
           p5.noStroke()
-
-          // yy
-          const yangX = 150 + xChange
-          const yinX = 350 - xChange
-          this.renderYang(yangX, y, 80)
-          this.renderYin(yinX, y, 80)
-
-          const actualPoints = Math.min(p.yangPts, p.yinPts) // points here
-          const unflooredIF =
-            Math.sqrt(1 - Math.pow(ec.increaseAP - 1, 2)) * actualPoints
-          const increaseFactor = Math.floor(unflooredIF)
-          p5.textSize(36)
           p5.fill(255)
-          p5.rect(yangX - 50, y + 120, 100, 50)
+          p5.rect(125, 740, 250, 50)
           p5.fill(30)
-          // yang points
-          p5.text(p.yangPts - increaseFactor, yangX - 50, y + 115)
+          p5.rect(375, 740, 250, 50)
+          p5.strokeWeight(1)
+          p5.textSize(28)
+          for (let i = 0; i < 5; i++) {
+            const [yangPts, yinPts] = p.history[i]
+            p5.stroke(255)
 
-          p5.fill(30)
-          p5.rect(yinX + 50, y + 120, 100, 50)
-          p5.fill(255)
-          // yin points
-          p5.text(p.yinPts - increaseFactor, yinX + 50, y + 115)
+            p5.fill(255)
+            const yangHeight = yangPts * 5
+            p5.rect(220 - 45 * i, 700 - yangHeight / 2, 30, yangHeight)
 
-          if (increaseFactor > 0) {
-            // actual points
-            p5.textSize(60)
-            p5.stroke(0)
-            p5.strokeWeight(10)
-            p5.fill(65, 200, 60)
-            p5.text(increaseFactor, 250, y - 8)
+            p5.fill(30)
+            const yinHeight = yinPts * 5
+            p5.rect(280 + 45 * i, 700 - yinHeight / 2, 30, yinHeight)
 
-            // letter rating
-            let letter = "F"
-            let percentage = 0
-            if (unflooredIF < 70) {
-              percentage = unflooredIF / 70
-              letter = "F"
-              p5.stroke(150)
-            } else if (unflooredIF < 80) {
-              percentage = (unflooredIF - 70) / 10
-              letter = "D"
-              p5.stroke(65, 200, 60)
-            } else if (unflooredIF < 90) {
-              percentage = (unflooredIF - 80) / 10
-              letter = "C"
-              p5.stroke(23, 160, 227)
-            } else if (unflooredIF < 100) {
-              percentage = (unflooredIF - 90) / 10
-              letter = "B"
-              p5.stroke(237, 190, 17)
-            } else if (unflooredIF < 110) {
-              percentage = (unflooredIF - 100) / 10
-              letter = "A"
-              p5.stroke(240, 70, 60)
-            } else {
-              percentage = 1
-              letter = "S"
-              p5.stroke(255)
-            }
-            // trigger new letter effect
-            if (this.prevRatingLetters[i] !== letter) {
-              this.prevRatingLetters[i] = letter
-              this.endingRatingAPs[i] = 0
-              this.playSound(this.scoreSound)
-            }
-            this.endingRatingAPs[i] = Math.min(1, this.endingRatingAPs[i] + 0.1)
-            p5.textSize(120 - 50 * this.endingRatingAPs[i])
-            p5.fill(0)
-            p5.strokeWeight(15)
-            p5.text(letter, 250, y + 300 - 10)
-            p5.strokeWeight(6)
-            p5.noFill()
-            p5.arc(250, y + 300, 130, 130, 0, percentage * 360)
+            p5.noStroke()
+            // p5.fill(30) // already did
+            p5.text(yangPts, 220 - 45 * i, 736)
+
+            p5.fill(255)
+            p5.text(yinPts, 280 + 45 * i, 736)
           }
         }
+
         // update ap
         if (ec.yyAP < 1) ec.yyAP = Math.min(1, ec.yyAP + 0.02)
         else if (ec.increaseAP < 1) {

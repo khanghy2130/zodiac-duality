@@ -83,6 +83,13 @@ export default class GameClient {
               prevYangPts: 0,
               yinPts: 0,
               yangPts: 0,
+              history: [
+                [0, 0],
+                [0, 0],
+                [0, 0],
+                [0, 0],
+                [0, 0],
+              ],
               collection: [
                 [null, null, null, null],
                 [null, null, null, null],
@@ -139,6 +146,7 @@ export default class GameClient {
         render.click(p5)
       }
 
+      // TEST immediate end
       // p5.keyPressed = () => {
       //   // start ending phase
       //   gameplay.phase = "ENDING"
@@ -146,8 +154,8 @@ export default class GameClient {
       //   gameplay.endingControl.yyAP = 0
       //   gameplay.endingControl.increaseAP = 0
       //   gameplay.render.buttons.closeShop.ap = 0
-      //   gameplay.render.endingRatingAPs = [0, 0, 0, 0]
-      //   gameplay.render.prevRatingLetters = ["F", "F", "F", "F"]
+      //   gameplay.render.endingRatingAP = 0
+      //   gameplay.render.prevRatingLetter = "F"
       //   gameplay.render.buttons.shareImage.ap = 0
       // }
     }

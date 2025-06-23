@@ -7,6 +7,7 @@ export interface LogicPlayer {
   prevYangPts: number
   yinPts: number
   yangPts: number
+  history: number[][]
   collection: Collection
 }
 

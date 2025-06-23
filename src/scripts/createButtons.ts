@@ -319,6 +319,12 @@ const createButtons = (
               }
             }
           }
+
+          // set to history
+          p.history[game.round - 1] = [
+            p.yangPts - p.prevYangPts,
+            p.yinPts - p.prevYinPts,
+          ]
         })
 
         game.round++ // update round
@@ -374,6 +380,13 @@ const createButtons = (
               prevYangPts: 0,
               yinPts: 0,
               yangPts: 0,
+              history: [
+                [0, 0],
+                [0, 0],
+                [0, 0],
+                [0, 0],
+                [0, 0],
+              ],
               collection: [
                 [null, null, null, null],
                 [null, null, null, null],
