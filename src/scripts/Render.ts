@@ -1503,6 +1503,20 @@ export default class Render {
       return (gp.yieldPreview.isShown = !gp.yieldPreview.isShown)
     }
 
+    // clicked main points to reopen ending modal?
+    if (
+      gp.phase === "ENDING" &&
+      !gp.endingControl.isOpened &&
+      mx > 120 &&
+      mx < 440 &&
+      my > 30 &&
+      my < 90
+    ) {
+      this.playSound(this.clickingSound)
+      gp.endingControl.isOpened = true
+      return
+    }
+
     // inspect card in collection
     const clickedCardX = Math.floor((mx - (gp.localDisplay.x - 52.5)) / 105)
     const clickedCardY = Math.floor((my - (gp.localDisplay.y - 70)) / 140)
