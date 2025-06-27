@@ -43,7 +43,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 4,
+      num: 40,
       where: "ROW",
       con: {
         force: "YIN",
@@ -56,7 +56,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "ADJ",
       con: {
         special: "UNIQUEELE",
@@ -69,7 +69,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: false,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["TIGER", "PIG"],
@@ -82,7 +82,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: true,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["DOG", "RABBIT"],
@@ -95,7 +95,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: false,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["DRAGON", "SNAKE"],
@@ -108,7 +108,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -121,7 +121,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: true,
     ability: {
-      num: 2,
+      num: 15,
       where: "ALL",
       con: {
         special: "EDGE",
@@ -134,7 +134,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: false,
     ability: {
-      num: 2,
+      num: 15,
       where: "ALL",
       con: {
         special: "DOUBLEADJ",
@@ -147,7 +147,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: true,
     ability: {
-      num: 2,
+      num: 15,
       where: "ALL",
       con: {
         special: "DOUBLEADJ",
@@ -160,7 +160,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: false,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["MONKEY", "CHICKEN"],
@@ -173,7 +173,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: true,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["HORSE", "GOAT"],
@@ -186,7 +186,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -199,7 +199,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: true,
     ability: {
-      num: 3,
+      num: 30,
       where: "ADJ",
       con: {
         special: "EMPTY",
@@ -212,7 +212,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: false,
     ability: {
-      num: 2,
+      num: 15,
       where: "ALL",
       con: {
         special: "EDGE",
@@ -225,7 +225,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: true,
     ability: {
-      num: 3,
+      num: 30,
       where: "ALL",
       con: {
         animals: ["RAT", "OX"],
@@ -238,7 +238,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: false,
     ability: {
-      num: 3,
+      num: 30,
       where: "ADJ",
       con: {
         special: "EMPTY",
@@ -251,7 +251,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "ROW",
       con: {
         force: "YANG",
@@ -264,7 +264,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -277,7 +277,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 4,
+      num: 35,
       where: "ADJ",
       con: {
         force: "YANG",
@@ -290,7 +290,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: true,
     ability: {
-      num: 3,
+      num: 25,
       where: "ALL",
       con: {
         animals: ["PIG", "RABBIT", "GOAT"],
@@ -303,7 +303,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: false,
     ability: {
-      num: 4,
+      num: 40,
       where: "ADJ",
       con: {
         special: "UNIQUEELE",
@@ -316,7 +316,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "COL",
       con: {
         force: "YANG",
@@ -329,7 +329,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: false,
     ability: {
-      num: 3,
+      num: 30,
       where: "ROW",
       con: {
         special: "UNIQUEELE",
@@ -342,7 +342,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -355,7 +355,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 2,
+      num: 20,
       where: "ALL",
       con: {
         ele: "WOOD",
@@ -368,7 +368,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: true,
     ability: {
-      num: 2,
+      num: 20,
       where: "ALL",
       con: {
         ele: "FIRE",
@@ -381,7 +381,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: false,
     ability: {
-      num: 2,
+      num: 20,
       where: "ALL",
       con: {
         ele: "EARTH",
@@ -394,7 +394,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: true,
     ability: {
-      num: 2,
+      num: 20,
       where: "ALL",
       con: {
         ele: "METAL",
@@ -407,7 +407,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: false,
     ability: {
-      num: 2,
+      num: 20,
       where: "ALL",
       con: {
         ele: "WATER",
@@ -420,7 +420,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -433,7 +433,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "DIA",
       con: {
         ele: "WOOD",
@@ -446,7 +446,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: false,
     ability: {
-      num: 4,
+      num: 40,
       where: "DIA",
       con: {
         ele: "FIRE",
@@ -459,7 +459,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "DIA",
       con: {
         ele: "EARTH",
@@ -472,7 +472,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: false,
     ability: {
-      num: 4,
+      num: 40,
       where: "DIA",
       con: {
         ele: "METAL",
@@ -485,7 +485,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: true,
     ability: {
-      num: 4,
+      num: 40,
       where: "DIA",
       con: {
         ele: "WATER",
@@ -498,7 +498,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -512,7 +512,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: true,
     ability: {
-      num: 4,
+      num: 35,
       where: "ADJ",
       con: {
         force: "YIN",
@@ -525,7 +525,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: false,
     ability: {
-      num: 4,
+      num: 35,
       where: "DIA",
       con: {
         force: "YANG",
@@ -538,7 +538,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: true,
     ability: {
-      num: 3,
+      num: 25,
       where: "ALL",
       con: {
         animals: ["SNAKE", "CHICKEN", "OX"],
@@ -551,7 +551,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: false,
     ability: {
-      num: 3,
+      num: 25,
       where: "ALL",
       con: {
         animals: ["RAT", "DRAGON", "MONKEY"],
@@ -564,7 +564,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: true,
     ability: {
-      num: 4,
+      num: 35,
       where: "DIA",
       con: {
         force: "YIN",
@@ -577,7 +577,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -590,7 +590,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 3,
+      num: 35,
       where: "ALL",
       con: {
         ele: "FLUX",
@@ -603,7 +603,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: true,
     ability: {
-      num: 3,
+      num: 35,
       where: "ALL",
       con: {
         ele: "FLUX",
@@ -616,7 +616,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: false,
     ability: {
-      num: 4,
+      num: 40,
       where: "COL",
       con: {
         force: "YIN",
@@ -629,7 +629,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: true,
     ability: {
-      num: 3,
+      num: 30,
       where: "COL",
       con: {
         special: "UNIQUEELE",
@@ -642,7 +642,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: false,
     ability: {
-      num: 3,
+      num: 25,
       where: "ALL",
       con: {
         animals: ["DOG", "TIGER", "HORSE"],
@@ -655,7 +655,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 5,
+      num: 50,
       where: "SELF",
       con: {
         special: "FLUX",

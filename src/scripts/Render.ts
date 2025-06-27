@@ -174,7 +174,7 @@ export default class Render {
     })
 
     p5.noStroke()
-    p5.textSize(36)
+    p5.textSize(34)
 
     // current scoring sums
     if (isScoring && sc.playerIndex === 0) {
@@ -193,19 +193,19 @@ export default class Render {
       p5.rect(200, 115, 160, 60, 0, 0, 0, 20)
       p5.fill(30)
       p5.rect(360, 115, 160, 60, 0, 0, 20, 0)
-      p5.text("+" + gp.yieldPreview.yangSum, 200, 111)
+      p5.text("+" + gp.yieldPreview.yangSum, 195, 111)
       p5.fill(255)
-      p5.text("+" + gp.yieldPreview.yinSum, 360, 111)
+      p5.text("+" + gp.yieldPreview.yinSum, 365, 111)
     }
 
-    p5.textSize(44)
+    p5.textSize(40)
     p5.fill(255)
     p5.rect(200, 60, 160, 60, 20, 0, 0, 0)
     p5.fill(30)
     p5.rect(360, 60, 160, 60, 0, 20, 0, 0)
-    p5.text(displayPoints[0][0], 200, 55)
+    p5.text(displayPoints[0][0], 195, 55)
     p5.fill(255)
-    p5.text(displayPoints[0][1], 360, 55)
+    p5.text(displayPoints[0][1], 365, 55)
 
     this.renderYin(280, 60, 30)
     this.renderYang(280, 60, 30)
@@ -268,12 +268,12 @@ export default class Render {
         }
       }
     }
-    // render preview if not during scoring
+    // render yield preview on cards if not during scoring
     if (isNotScoring && gp.yieldPreview.isShown) {
       const sumsList = gp.yieldPreview.sumsList
       p5.noStroke()
       p5.strokeWeight(4)
-      p5.textSize(30)
+      p5.textSize(24)
       for (let i = 0; i < sumsList.length; i++) {
         const sumItem = sumsList[i]
 
@@ -282,7 +282,7 @@ export default class Render {
         const ry = ldy + 140 * sumItem.pos[1]
         p5.rect(rx, ry - 10, 60, 35, 5)
         p5.fill(sumItem.isYin ? 255 : 30)
-        p5.text("+" + sumItem.sum, rx, ry - 15)
+        p5.text("+" + sumItem.sum, rx, ry - 13)
       }
     }
 
@@ -481,7 +481,7 @@ export default class Render {
       sc.ap = Math.min(1, sc.ap + 0.02)
       p5.noStroke()
       p5.strokeWeight(4)
-      p5.textSize(30)
+      p5.textSize(24)
       for (let i = 0; i < sc.scoresList.length; i++) {
         const scoringCard = sc.scoresList[i]
 
@@ -513,7 +513,7 @@ export default class Render {
         p5.rect(0, -10, 60, 35, 5)
         p5.noStroke()
         p5.fill(scoringCard.isYin ? 255 : 30)
-        p5.text("+" + scoringCard.sum, 0, -15)
+        p5.text("+" + scoringCard.sum, 0, -13)
         p5.pop()
       }
     }
@@ -544,7 +544,7 @@ export default class Render {
         const unflooredIF =
           Math.sqrt(1 - Math.pow(ec.increaseAP - 1, 2)) * actualPoints
         const increaseFactor = Math.floor(unflooredIF)
-        p5.textSize(36)
+        p5.textSize(34)
         p5.fill(255)
         p5.rect(yangX - 50, y + 120, 100, 50)
         p5.fill(30)
@@ -568,24 +568,24 @@ export default class Render {
           // letter rating
           let letter: Rating = "F"
           let percentage = 0
-          if (unflooredIF < 70) {
-            percentage = unflooredIF / 70
+          if (unflooredIF < 700) {
+            percentage = unflooredIF / 700
             letter = "F"
             p5.stroke(150)
-          } else if (unflooredIF < 80) {
-            percentage = (unflooredIF - 70) / 10
+          } else if (unflooredIF < 800) {
+            percentage = (unflooredIF - 700) / 100
             letter = "D"
             p5.stroke(65, 200, 60)
-          } else if (unflooredIF < 90) {
-            percentage = (unflooredIF - 80) / 10
+          } else if (unflooredIF < 900) {
+            percentage = (unflooredIF - 800) / 100
             letter = "C"
             p5.stroke(23, 160, 227)
-          } else if (unflooredIF < 100) {
-            percentage = (unflooredIF - 90) / 10
+          } else if (unflooredIF < 1000) {
+            percentage = (unflooredIF - 900) / 100
             letter = "B"
             p5.stroke(237, 190, 17)
-          } else if (unflooredIF < 110) {
-            percentage = (unflooredIF - 100) / 10
+          } else if (unflooredIF < 1100) {
+            percentage = (unflooredIF - 1000) / 100
             letter = "A"
             p5.stroke(240, 70, 60)
           } else {
@@ -615,29 +615,29 @@ export default class Render {
           // charts
           p5.noStroke()
           p5.fill(255)
-          p5.rect(125, 740, 250, 50)
+          p5.rect(125, 730, 250, 30)
           p5.fill(30)
-          p5.rect(375, 740, 250, 50)
+          p5.rect(375, 730, 250, 30)
           p5.strokeWeight(1)
-          p5.textSize(28)
+          p5.textSize(18)
           for (let i = 0; i < 5; i++) {
             const [yangPts, yinPts] = p.history[i]
             p5.stroke(255)
 
             p5.fill(255)
-            const yangHeight = yangPts * 5
+            const yangHeight = yangPts * 0.5
             p5.rect(220 - 45 * i, 700 - yangHeight / 2, 30, yangHeight)
 
             p5.fill(30)
-            const yinHeight = yinPts * 5
+            const yinHeight = yinPts * 0.5
             p5.rect(280 + 45 * i, 700 - yinHeight / 2, 30, yinHeight)
 
             p5.noStroke()
             // p5.fill(30) // already did
-            p5.text(yangPts, 220 - 45 * i, 736)
+            p5.text(yangPts, 220 - 45 * i, 728)
 
             p5.fill(255)
-            p5.text(yinPts, 280 + 45 * i, 736)
+            p5.text(yinPts, 280 + 45 * i, 728)
           }
         }
 
@@ -1085,18 +1085,18 @@ export default class Render {
   renderMiniAbility(p5: P5, card: Card) {
     const ability = card.ability
     p5.noStroke()
-    p5.textSize(16)
+    p5.textSize(12)
     const numY = 48
     if (card.isYin) {
       p5.fill(30)
-      p5.rect(0, numY, 25, 15)
+      p5.rect(0, numY, 28, 15, 2)
       p5.fill(255)
-      p5.text("+" + ability.num, 0, numY - 2)
+      p5.text("+" + ability.num, 0, numY - 1.5)
     } else {
       p5.fill(255)
-      p5.rect(0, numY, 25, 15)
+      p5.rect(0, numY, 28, 15, 2)
       p5.fill(30)
-      p5.text("+" + ability.num, 0, numY - 2)
+      p5.text("+" + ability.num, 0, numY - 1.5)
     }
 
     // flux
