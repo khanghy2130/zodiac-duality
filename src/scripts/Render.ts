@@ -280,7 +280,7 @@ export default class Render {
         p5.fill(sumItem.isYin ? 30 : 255)
         const rx = ldx + 105 * sumItem.pos[0]
         const ry = ldy + 140 * sumItem.pos[1]
-        p5.rect(rx, ry - 10, 60, 35, 5)
+        p5.rect(rx, ry - 10, 70, 30, 5)
         p5.fill(sumItem.isYin ? 255 : 30)
         p5.text("+" + sumItem.sum, rx, ry - 13)
       }
@@ -510,7 +510,7 @@ export default class Render {
         p5.scale(sc.ap < 0.3 ? this.easeOutElastic(scaleFactor) : scaleFactor)
         if (i === sc.cardIndex) p5.stroke(240, 70, 60)
         p5.fill(scoringCard.isYin ? 30 : 255)
-        p5.rect(0, -10, 60, 35, 5)
+        p5.rect(0, -10, 70, 30, 5)
         p5.noStroke()
         p5.fill(scoringCard.isYin ? 255 : 30)
         p5.text("+" + scoringCard.sum, 0, -13)
@@ -794,13 +794,13 @@ export default class Render {
       this.renderYin(400, 650, 40)
       p5.textSize(30)
       p5.fill(255)
-      p5.rect(90, 720, 70, 40)
+      p5.rect(90, 720, 90, 40)
       p5.fill(30)
-      p5.text(100, 90, 716)
+      p5.text(1000, 90, 716)
       p5.fill(30)
-      p5.rect(410, 720, 70, 40)
+      p5.rect(410, 720, 90, 40)
       p5.fill(255)
-      p5.text(100, 410, 716)
+      p5.text(1000, 410, 716)
 
       this.renderYang(250, 760, 50)
       this.renderYin(250, 760, 50)
@@ -808,7 +808,7 @@ export default class Render {
       p5.fill(65, 200, 60)
       p5.stroke(30)
       p5.strokeWeight(10)
-      p5.text(100, 250, 670)
+      p5.text(1000, 250, 670)
 
       p5.stroke(255)
       p5.strokeWeight(5)
@@ -819,6 +819,8 @@ export default class Render {
       p5.line(400, 770, 340, 770)
       p5.line(350, 760, 340, 770)
       p5.line(350, 780, 340, 770)
+
+      this.buttons.closeShop.render(p5)
     }
 
     // card inspection
@@ -1346,7 +1348,214 @@ export default class Render {
 
     // blocked by wheel modal?
     if (gp.wheelModalIsOpened) {
-      return (gp.wheelModalIsOpened = false)
+      if (buttons.closeShop.checkHover(mx, my)) {
+        return buttons.closeShop.clicked()
+      }
+      // check clicked on ele
+      let clickedDeg = p5.atan2(my - 350, mx - 250)
+
+      let animalIndex = Math.floor(clickedDeg / 30) + 3
+      if (animalIndex < 0) animalIndex = 12 + animalIndex
+
+      const deg = animalIndex * 30 - 75
+      if (animalIndex < 6) {
+        // ele #1
+        if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg - 8) * 225 + 250,
+            p5.sin(deg - 8) * 225 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[animalIndex]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg - 8) * 225 + 250,
+              p5.sin(deg - 8) * 225 + 350,
+              0
+            )
+          return
+        }
+        // ele #2
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg - 3) * 195 + 250,
+            p5.sin(deg - 3) * 195 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(animalIndex + 2) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg - 3) * 195 + 250,
+              p5.sin(deg - 3) * 195 + 350,
+              0
+            )
+          return
+        }
+        // ele #3
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg + 3) * 225 + 250,
+            p5.sin(deg + 3) * 225 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(animalIndex + 1) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg + 3) * 225 + 250,
+              p5.sin(deg + 3) * 225 + 350,
+              0
+            )
+          return
+        }
+        // ele #4
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg + 8) * 195 + 250,
+            p5.sin(deg + 8) * 195 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(animalIndex + 3) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg + 8) * 195 + 250,
+              p5.sin(deg + 8) * 195 + 350,
+              0
+            )
+          return
+        }
+      } else {
+        const _i = 11 - animalIndex
+        // ele #1
+        if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg - 8) * 195 + 250,
+            p5.sin(deg - 8) * 195 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(_i + 3) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg - 8) * 195 + 250,
+              p5.sin(deg - 8) * 195 + 350,
+              0
+            )
+          return
+        }
+        // ele #2
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg - 3) * 225 + 250,
+            p5.sin(deg - 3) * 225 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(_i + 1) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg - 3) * 225 + 250,
+              p5.sin(deg - 3) * 225 + 350,
+              0
+            )
+          return
+        }
+        // ele #3
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg + 3) * 195 + 250,
+            p5.sin(deg + 3) * 195 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[(_i + 2) % 6]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg + 3) * 195 + 250,
+              p5.sin(deg + 3) * 195 + 350,
+              0
+            )
+          return
+        }
+        // ele #4
+        else if (
+          p5.dist(
+            mx,
+            my,
+            p5.cos(deg + 8) * 225 + 250,
+            p5.sin(deg + 8) * 225 + 350
+          ) < 15
+        ) {
+          this.playSound(this.clickingSound)
+          const card = CARDS_TABLE.find(
+            (c) =>
+              c.animal === this.animalsOrder[animalIndex] &&
+              c.ele === this.elesOrder[_i]
+          )
+          if (card)
+            gp.inspectCard(
+              card,
+              p5.cos(deg + 8) * 225 + 250,
+              p5.sin(deg + 8) * 225 + 350,
+              0
+            )
+          return
+        }
+      }
+
+      return
     }
 
     // viewing a guest? go back button
@@ -1495,6 +1704,7 @@ export default class Render {
     if (p5.dist(mx, my, 35, 100) < 18) {
       this.playSound(this.clickingSound)
       gp.wheelModalIsOpened = true
+      this.buttons.closeShop.ap = 0
       return
     }
     // clicked preview?

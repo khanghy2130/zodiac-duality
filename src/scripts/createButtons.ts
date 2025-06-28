@@ -122,6 +122,12 @@ const createButtons = (
           return
         }
 
+        // closing wheel?
+        if (gameplay.wheelModalIsOpened) {
+          gameplay.wheelModalIsOpened = false
+          return
+        }
+
         shop.isOpened = false
         render.buttons.closeShop.ap = 1
       }
