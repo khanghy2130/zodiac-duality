@@ -403,7 +403,9 @@ const createButtons = (
           ],
         }
         gameplay.gs = game
-        gameplay.localDisplay.collection = game.players[0].collection
+        gameplay.localDisplay.collection = game.players[0].collection.map((r) =>
+          r.slice()
+        )
         gameplay.startScoringPhase()
       }
     ),
