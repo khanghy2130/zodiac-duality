@@ -43,7 +43,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 40,
+      num: 35,
       where: "ROW",
       con: {
         force: "YIN",
@@ -108,7 +108,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -186,7 +186,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -251,7 +251,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WATER",
     isYin: true,
     ability: {
-      num: 40,
+      num: 35,
       where: "ROW",
       con: {
         force: "YANG",
@@ -264,7 +264,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -316,7 +316,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "METAL",
     isYin: true,
     ability: {
-      num: 40,
+      num: 35,
       where: "COL",
       con: {
         force: "YANG",
@@ -342,7 +342,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -420,7 +420,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -498,7 +498,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -577,7 +577,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: false,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
@@ -616,7 +616,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "EARTH",
     isYin: false,
     ability: {
-      num: 40,
+      num: 35,
       where: "COL",
       con: {
         force: "YIN",
@@ -655,7 +655,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FLUX",
     isYin: true,
     ability: {
-      num: 50,
+      num: 55,
       where: "SELF",
       con: {
         special: "FLUX",
