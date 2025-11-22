@@ -590,7 +590,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "WOOD",
     isYin: false,
     ability: {
-      num: 35,
+      num: 40,
       where: "ALL",
       con: {
         ele: "FLUX",
@@ -603,7 +603,7 @@ export const CARDS_TABLE: Card[] = [
     ele: "FIRE",
     isYin: true,
     ability: {
-      num: 35,
+      num: 40,
       where: "ALL",
       con: {
         ele: "FLUX",
